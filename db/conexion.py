@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import getpass
-
+"""
 def connect(db_name: str=""):
     user = input("Usuario MongoDB [admin]: ") or "usuario"
     pwd = getpass.getpass("Contraseña MongoDB: ") or 'comercioTech123'
@@ -10,3 +10,13 @@ def connect(db_name: str=""):
     uri = f"mongodb://{user}:{pwd}@{host}:{port}/?authSource={db_name or 'admin'}"
     cliente = MongoClient(uri)
     return cliente[db_name]
+"""
+
+def connect(db_name="comerciotech"):
+    user = input("Usuario MongoDB Atlas: ") or "bastianofedamaldonado"
+    pwd = getpass.getpass("Contraseña MongoDB Atlas: ") or 'hQWUrFM8SE5ezU0H'
+    uri = f"mongodb+srv://{user}:{pwd}@{db_name}.sygfbbv.mongodb.net/{db_name}?retryWrites=true&w=majority"
+    client = MongoClient(uri)
+    db = client[db_name]
+    return db
+

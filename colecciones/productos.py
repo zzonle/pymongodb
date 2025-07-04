@@ -39,8 +39,8 @@ def agregar_producto(db):
         producto = {
             "nombre": nombre,
             "categoria": categoria,
-            "precio": precio,
-            "stock": stock
+            "precio": float(precio),
+            "stock": int(stock)
         }
         db.productos.insert_one(producto)
         print("Producto agregado exitosamente.")
@@ -58,8 +58,8 @@ def agregar_varios_productos(db):
             productos.append({
                 "nombre": nombre,
                 "categoria": categoria,
-                "precio": precio,
-                "stock": stock
+                "precio": float(precio),
+                "stock": int(stock)
             })
             opcion = input("Desea agregar otro producto? (s/n): ")
             if opcion.lower() != "s":
@@ -79,8 +79,8 @@ def actualizar_producto(db):
         producto = {
             "nombre": nombre,
             "categoria": categoria,
-            "precio": precio,
-            "stock": stock
+            "precio": float(precio),
+            "stock": int(stock)
         }
         db.productos.update_one({"_id": ObjectId(id)}, {"$set": producto})
         print("Producto actualizado exitosamente.")
