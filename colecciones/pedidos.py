@@ -23,11 +23,23 @@ def leer_pedidos(db):
 
         for pedido in pedidos:
             print(Fore.CYAN + "=" * 40)
-            print(f"Cliente_id: {pedido['cliente_id']}")
+            
+            # Buscar el cliente por su ID
+            cliente = db.clientes.find_one({"_id": ObjectId(pedido["cliente_id"])})
+            nombre_cliente = cliente["nombre"] if cliente else "Cliente no encontrado"
+            ancho = 40
+            print(f"Cliente   : {nombre_cliente}")
             print(f"Fecha     : {pedido['fecha']}")
-            print(f"Productos : {pedido['productos']}")
             print(f"Total     : {pedido['total']}")
             print(f"Estado    : {pedido['estado']}")
+            print(Fore.CYAN + "-" * ((ancho - 12)//2) + Style.BRIGHT + "PRODUCTOS" + Fore.CYAN + "-" * ((ancho - 12)//2))
+            for item in pedido['productos']:
+                producto = db.productos.find_one({"_id": ObjectId(item["producto_id"])})
+                if producto:
+                    print(f" Nombre: {producto['nombre']} \n Precio: {producto['precio']} \n Cantidad: {item['cantidad']} \n id: {item['producto_id']}")
+                else:
+                    print(f" Producto no encontrado para ID: {item['producto_id']}")
+
             print(Fore.CYAN + "=" * 40)
     except Exception as e:
         print(Fore.RED + "Error al buscar pedidos:", e, Style.RESET_ALL)
