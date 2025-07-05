@@ -13,8 +13,8 @@ def connect(db_name: str=""):
 """
 
 def connect(db_name="comerciotech"):
-    user = input("Usuario MongoDB Atlas: ") or "bastianofedamaldonado"
-    pwd = getpass.getpass("Contraseña MongoDB Atlas: ") or 'hQWUrFM8SE5ezU0H'
+    user = input("Usuario MongoDB Atlas: ") or "comercioTech"
+    pwd = getpass.getpass("Contraseña MongoDB Atlas: ") or 'KJntbc0OhgOSSi4c'
     uri = f"mongodb+srv://{user}:{pwd}@{db_name}.sygfbbv.mongodb.net/{db_name}?retryWrites=true&w=majority"
     client = MongoClient(uri)
     db = client[db_name]
