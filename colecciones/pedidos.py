@@ -1,14 +1,3 @@
-"""pedidos
-{
-  "cliente_id": ObjectId(),
-  "fecha": "2025-07-01T12:00:00Z",
-  "productos": [
-    { "producto_id": ObjectId(), "cantidad": 2 }
-  ],
-  "total": 499980,
-  "estado": "Procesado"
-} 
-"""
 from datetime import datetime
 from colorama import init, Fore, Style
 from bson.objectid import ObjectId

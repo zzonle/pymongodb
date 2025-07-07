@@ -1,4 +1,4 @@
-from colorama import init, Fore
+from colorama import init, Fore, Style
 from bson.objectid import ObjectId
 init(autoreset=True)
 
@@ -14,7 +14,7 @@ def leer_productos(db):
             print(f"Id          : {producto['_id']}")
             print(Fore.CYAN + "=" * 40)
     except Exception as e:
-        print("Error al buscar productos:", e)
+        print(Fore.RED + "Error al buscar productos:", e + Style.RESET_ALL)
 
 def leer_productos_por_id(db):
     try:
@@ -28,7 +28,7 @@ def leer_productos_por_id(db):
         print(f"Id          : {producto['_id']}")
         print(Fore.CYAN + "=" * 40) 
     except Exception as e:
-        print("Error al buscar producto:", e)
+        print(Fore.RED + "Error al buscar producto:", e + Style.RESET_ALL)
 
 def agregar_producto(db):
     try:
@@ -43,9 +43,9 @@ def agregar_producto(db):
             "stock": int(stock)
         }
         db.productos.insert_one(producto)
-        print("Producto agregado exitosamente.")
+        print(Fore.GREEN + "Producto agregado exitosamente." + Style.RESET_ALL)
     except Exception as e:
-        print("Error al agregar producto:", e)
+        print(Fore.RED + "Error al agregar producto:", e + Style.RESET_ALL) 
 
 def agregar_varios_productos(db):
     try:
@@ -65,9 +65,9 @@ def agregar_varios_productos(db):
             if opcion.lower() != "s":
                 break
         db.productos.insert_many(productos)
-        print("Productos agregados exitosamente.")
+        print(Fore.GREEN + "Productos agregados exitosamente." + Style.RESET_ALL)
     except Exception as e:
-        print("Error al agregar productos:", e)
+        print(Fore.RED + "Error al agregar productos:", e + Style.RESET_ALL)
 
 def actualizar_producto(db):
     try:
@@ -83,15 +83,15 @@ def actualizar_producto(db):
             "stock": int(stock)
         }
         db.productos.update_one({"_id": ObjectId(id)}, {"$set": producto})
-        print("Producto actualizado exitosamente.")
+        print(Fore.GREEN + "Producto actualizado exitosamente." + Style.RESET_ALL)
     except Exception as e:
-        print("Error al actualizar producto:", e)
+        print(Fore.RED +"Error al actualizar producto:", e + Style.RESET_ALL)
     
 def eliminar_producto(db):
     try:
         id = input("Ingrese el id del producto: ")
         db.productos.delete_one({"_id": ObjectId(id)})
-        print("Producto eliminado exitosamente.")
+        print(Fore.GREEN + "Producto eliminado exitosamente." + Style.RESET_ALL)
     except Exception as e:
-        print("Error al eliminar producto:", e)
+        print(Fore.RED + "Error al eliminar producto:", e + Style.RESET_ALL)
 
