@@ -11,9 +11,8 @@ def menu_pedidos(db):
         print(Fore.GREEN + "1. Leer pedido")
         print(Fore.GREEN + "2. Leer pedido por id")
         print(Fore.GREEN + "3. Agregar pedido")
-        print(Fore.GREEN + "4. Agregar varios pedidos")
-        print(Fore.GREEN + "5. Actualizar pedido")
-        print(Fore.GREEN + "6. Eliminar pedido")
+        print(Fore.GREEN + "4. Actualizar pedido")
+        print(Fore.GREEN + "5. Eliminar pedido")
         print(Fore.RED + "q. Volver menú principal")
         print(Fore.CYAN + "=" * ancho)
 
@@ -29,12 +28,9 @@ def menu_pedidos(db):
             agregar_pedido(db)
             input("Presione ENTER para volver al menú de pedidos...")
         elif opcion == "4":
-            agregar_varios_pedidos(db)
-            input("Presione ENTER para volver al menú de pedidos...")
-        elif opcion == "5":
             actualizar_pedido(db)
             input("Presione ENTER para volver al menú de pedidos...")
-        elif opcion == "6":
+        elif opcion == "5":
             eliminar_pedido(db)
             input("Presione ENTER para volver al menú de pedidos...")
         elif opcion.lower() == "q":
